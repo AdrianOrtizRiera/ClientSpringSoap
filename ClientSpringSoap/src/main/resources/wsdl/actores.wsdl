@@ -1,0 +1,196 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://www.adrian.ortiz.com/actors-ws" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://adrian.ortiz.com/actors-ws" targetNamespace="http://adrian.ortiz.com/actors-ws">
+<wsdl:types>
+<xs:schema xmlns:tns="http://www.adrian.ortiz.com/actors-ws" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.adrian.ortiz.com/actors-ws">
+<xs:element name="getActorByIdRequest">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="actor_id" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="getActorByIdResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="actorType" type="tns:actorType"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:complexType name="actorType">
+<xs:sequence>
+<xs:element name="actor_id" type="xs:int"/>
+<xs:element name="first_name" type="xs:string"/>
+<xs:element name="last_name" type="xs:string"/>
+<xs:element name="last_update" type="xs:date"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="getAllActorsRequest">
+<xs:complexType/>
+</xs:element>
+<xs:element name="getAllActorsResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" name="actorType" type="tns:actorType"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:complexType name="serviceStatus">
+<xs:sequence>
+<xs:element name="statusCode" type="xs:string"/>
+<xs:element name="message" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="addActorRequest">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="first_name" type="xs:string"/>
+<xs:element name="last_name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="addActorResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="serviceStatus" type="tns:serviceStatus"/>
+<xs:element name="actorType" type="tns:actorType"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="updateActorRequest">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="actor_id" type="xs:int"/>
+<xs:element name="first_name" type="xs:string"/>
+<xs:element name="last_name" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="updateActorResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="serviceStatus" type="tns:serviceStatus"/>
+<xs:element name="actorType" type="tns:actorType"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="deleteActorRequest">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="actor_id" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="deleteActorResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="serviceStatus" type="tns:serviceStatus"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="getAllActorsResponse">
+<wsdl:part element="sch:getAllActorsResponse" name="getAllActorsResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="addActorRequest">
+<wsdl:part element="sch:addActorRequest" name="addActorRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="updateActorRequest">
+<wsdl:part element="sch:updateActorRequest" name="updateActorRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="deleteActorRequest">
+<wsdl:part element="sch:deleteActorRequest" name="deleteActorRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="addActorResponse">
+<wsdl:part element="sch:addActorResponse" name="addActorResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="getAllActorsRequest">
+<wsdl:part element="sch:getAllActorsRequest" name="getAllActorsRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="getActorByIdResponse">
+<wsdl:part element="sch:getActorByIdResponse" name="getActorByIdResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="getActorByIdRequest">
+<wsdl:part element="sch:getActorByIdRequest" name="getActorByIdRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="deleteActorResponse">
+<wsdl:part element="sch:deleteActorResponse" name="deleteActorResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="updateActorResponse">
+<wsdl:part element="sch:updateActorResponse" name="updateActorResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType name="ActorsPort">
+<wsdl:operation name="getAllActors">
+<wsdl:input message="tns:getAllActorsRequest" name="getAllActorsRequest"> </wsdl:input>
+<wsdl:output message="tns:getAllActorsResponse" name="getAllActorsResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="addActor">
+<wsdl:input message="tns:addActorRequest" name="addActorRequest"> </wsdl:input>
+<wsdl:output message="tns:addActorResponse" name="addActorResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="updateActor">
+<wsdl:input message="tns:updateActorRequest" name="updateActorRequest"> </wsdl:input>
+<wsdl:output message="tns:updateActorResponse" name="updateActorResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="deleteActor">
+<wsdl:input message="tns:deleteActorRequest" name="deleteActorRequest"> </wsdl:input>
+<wsdl:output message="tns:deleteActorResponse" name="deleteActorResponse"> </wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getActorById">
+<wsdl:input message="tns:getActorByIdRequest" name="getActorByIdRequest"> </wsdl:input>
+<wsdl:output message="tns:getActorByIdResponse" name="getActorByIdResponse"> </wsdl:output>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="ActorsPortSoap11" type="tns:ActorsPort">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="getAllActors">
+<soap:operation soapAction=""/>
+<wsdl:input name="getAllActorsRequest">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getAllActorsResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="addActor">
+<soap:operation soapAction=""/>
+<wsdl:input name="addActorRequest">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="addActorResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="updateActor">
+<soap:operation soapAction=""/>
+<wsdl:input name="updateActorRequest">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="updateActorResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="deleteActor">
+<soap:operation soapAction=""/>
+<wsdl:input name="deleteActorRequest">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="deleteActorResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getActorById">
+<soap:operation soapAction=""/>
+<wsdl:input name="getActorByIdRequest">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getActorByIdResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="ActorsPortService">
+<wsdl:port binding="tns:ActorsPortSoap11" name="ActorsPortSoap11">
+<soap:address location="http://localhost:8080/ws"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>
